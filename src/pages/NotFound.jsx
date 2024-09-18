@@ -4,7 +4,7 @@ export default function Home() {
   return (
     <div>
       <h2>404 Not Found!</h2>
-      <p><Link to="/">Back Home</Link></p>
+      <p><Link to="/">Go back</Link></p>
     </div>
   )
 }
