@@ -3,5 +3,13 @@
 }
 
 .active {
-  color: orange;
+  color: rgb(138, 148, 95);
+}
+
+.nav {
+  display: flex;
+  gap: 8px;
+  padding: 0 16px 0 16px;
+  font-size: 26px;
+  margin-bottom: 20px;
 }

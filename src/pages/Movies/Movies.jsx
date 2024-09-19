@@ -1,6 +1,7 @@
+
 import { useState } from "react"
-import { getMovies } from "../movies-api";
-import MovieList from "../components/MoviesList/MoviesList";
+import { getMovies } from "../../movies-api";
+import MovieList from "../../components/MoviesList/MoviesList";
 
 export default function Products() {
   const [query, setQuery] = useState('');
@@ -31,7 +32,10 @@ export default function Products() {
         />
         <button type="submit">Search</button>
       </form>
-      <MovieList movies={movies} />
+      {handleSearch.length > 0 ? (< MovieList movies={movies} />) : (
+        <p>We don`t have this movie!
+        </p>
+      )}
     </div>
   );
 }
