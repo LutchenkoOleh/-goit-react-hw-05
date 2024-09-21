@@ -1,9 +1,9 @@
 
 import { useState } from "react"
 import { getMovies } from "../../movies-api";
-import MovieList from "../../components/MoviesList/MoviesList";
+import MovieList from "../../components/MovieList/MovieList";
 import { useNavigate } from "react-router-dom";
-import css from "./Movies.module.css"
+import css from "./MoviesPage.module.css"
 
 export default function Movies() {
 

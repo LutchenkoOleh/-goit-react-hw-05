@@ -2,9 +2,9 @@
 import { Link, NavLink, useLocation, useParams, Outlet } from "react-router-dom"
 import { getMovieById } from "../../movies-api"
 import { useState, useEffect } from "react";
-import MovieReviews from "../../components/MoviesReviews/MovieReviews";
-import MovieCast from "../../components/MoviesCast/MovieCast";
-import css from "./MovieDetails.module.css"
+import MovieReviews from "../../components/MovieReviews/MovieReviews";
+import MovieCast from "../../components/MovieCast/MovieCast";
+import css from "./MovieDetailsPage.module.css"
 
 
 export default function MovieDetails() {

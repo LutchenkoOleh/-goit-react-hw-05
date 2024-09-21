@@ -1,7 +1,8 @@
 
 import { getTrendingMovies } from "../../movies-api";
 import { useState, useEffect } from "react";
-import MovieList from "../../components/MoviesList/MoviesList"
+import MovieList from "../../components/MovieList/MovieList"
+import css from "./HomePage.module.css"
 
 export default function Home() {
   const [movies, setMovies] = useState([]);
