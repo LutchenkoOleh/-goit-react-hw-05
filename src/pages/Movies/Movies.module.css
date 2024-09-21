@@ -1,0 +1,21 @@
+.wrap {
+  margin-left: 10px;
+}
+
+.form {
+  display: flex;
+  gap: 4px;
+}
+
+.input {
+  border: 1px solid #111;
+  border-radius: 4px;
+}
+
+.button {
+  border: none;
+  background-color: blue;
+  color: #fff;
+  border-radius: 4px;
+
+}
