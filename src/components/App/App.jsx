@@ -11,11 +11,11 @@ import { Suspense } from "react"
 import { lazy } from "react"
 
 export default function App() {
-  const HomeLazy = lazy(() => import('../../pages/HomePage/HomePage').then(() => ({ default: Home })));
-  const MoviesLazy = lazy(() => import('../../pages/MoviesPage/MoviesPage').then(() => ({ default: Movies })));
-  const MovieDetailsLazy = lazy(() => import('../../pages/MovieDetailsPage/MovieDetailsPage').then(() => ({ default: MovieDetails })));
-  const MovieCastLazy = lazy(() => import('../MovieCast/MovieCast').then(() => ({ default: MovieCast })));
-  const MovieReviewsLazy = lazy(() => import('../MovieReviews/MovieReviews').then(() => ({ default: MovieReviews })));
+  const HomeLazy = lazy(() => import('../../pages/HomePage/HomePage'));
+  const MoviesLazy = lazy(() => import('../../pages/MoviesPage/MoviesPage'));
+  const MovieDetailsLazy = lazy(() => import('../../pages/MovieDetailsPage/MovieDetailsPage'));
+  const MovieCastLazy = lazy(() => import('../MovieCast/MovieCast'));
+  const MovieReviewsLazy = lazy(() => import('../MovieReviews/MovieReviews'));
 
   return (
     <div className={css.container}>

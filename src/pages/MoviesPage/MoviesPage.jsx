@@ -1,31 +1,39 @@
-
-import { useState } from "react"
+import { useState, useEffect } from "react";
 import { getMovies } from "../../movies-api";
 import MovieList from "../../components/MovieList/MovieList";
-import { useNavigate } from "react-router-dom";
-import css from "./MoviesPage.module.css"
+import { useSearchParams } from "react-router-dom";
+import css from "./MoviesPage.module.css";
 
 export default function Movies() {
-
   const [query, setQuery] = useState('');
   const [movies, setMovies] = useState([]);
   const [error, setError] = useState(null);
-  const [searched, setSearched] = useState(false)
-  const navigate = useNavigate();
+  const [searched, setSearched] = useState(false);
 
+  const [searchParams, setSearchParams] = useSearchParams();
 
-  const handleSearch = async (e) => {
-    e.preventDefault();
-    if (query.trim()) {
-      navigate(`/movies?query=${query}`);
+  useEffect(() => {
+    const movieQuery = searchParams.get("query");
+    if (movieQuery) {
+      fetchMovies(movieQuery);
     }
+  }, [searchParams]);
+
+  const fetchMovies = async (searchQuery) => {
     try {
-      const searchResults = await getMovies(query);
+      const searchResults = await getMovies(searchQuery);
       setMovies(searchResults);
       setSearched(true);
-      setQuery('')
     } catch (err) {
-      setError('Failed to fetch movies');
+      setError("Failed to fetch movies");
+    }
+  };
+
+  const handleSearch = (e) => {
+    e.preventDefault();
+    if (query.trim()) {
+      setSearchParams({ query });
+      setQuery('');
     }
   };
 
@@ -43,9 +51,10 @@ export default function Movies() {
         />
         <button className={css.button} type="submit">Search</button>
       </form>
-      {searched && (movies.length > 0 ? (< MovieList movies={movies} />) : (
-        <p>We don`t have this movie!
-        </p>
+      {searched && (movies.length > 0 ? (
+        <MovieList movies={movies} />
+      ) : (
+        <p>We don't have this movie!</p>
       ))}
     </div>
   );
