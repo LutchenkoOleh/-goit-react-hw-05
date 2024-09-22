@@ -1,5 +1,5 @@
 
-import { Link, useLocation, useParams } from "react-router-dom"
+import { Link, useLocation, useParams, Outlet, NavLink } from "react-router-dom"
 import { getMovieById } from "../../movies-api"
 import { useState, useEffect, useRef } from "react";
 import MovieReviews from "../../components/MovieReviews/MovieReviews";
@@ -11,8 +11,6 @@ export default function MovieDetails() {
   const { movieId } = useParams();
   const [movie, setMovie] = useState(null);
   const [error, setError] = useState(null);
-  const [showCast, setShowCast] = useState(false);
-  const [showReviews, setShowReviews] = useState(false);
 
   const location = useLocation();
   const previousLocation = useRef(location.state?.from ?? '/movies')
@@ -33,8 +31,6 @@ export default function MovieDetails() {
   if (error) return <div>{error}</div>;
   if (!movie) return <div>Loading...</div>;
 
-  const toggleCast = () => setShowCast(prevState => !prevState);
-  const toggleReviews = () => setShowReviews(prevState => !prevState);
 
 
   return (
@@ -65,22 +61,18 @@ export default function MovieDetails() {
           <h3>Additional information</h3>
           <ul>
             <li>
-              <button onClick={toggleCast}>
-                {showCast ? 'Hide Cast' : 'Cast'}
-              </button>
+              <NavLink to="cast" activeClassName={css.activeLink}>
+                Cast
+              </NavLink>
             </li>
             <li>
-              <button onClick={toggleReviews}>
-                {showReviews ? 'Hide Reviews' : 'Reviews'}
-              </button>
+              <NavLink to="reviews" activeClassName={css.activeLink}>
+                Reviews
+              </NavLink>
             </li>
           </ul>
         </nav>
-
-        {showCast && <MovieCast />}
-        {showReviews && <MovieReviews />}
-
-
+        <Outlet />
       </div>
     </div>
   );
